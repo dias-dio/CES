@@ -1,85 +1,92 @@
-# CES: Co-culture Efficacy Score Framework
+# CES: Co-culture Efficacy Score
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![App](https://img.shields.io/badge/App-Available_Now-FF9800?logo=rstudio)](https://<link-to-your-shiny-app>)
+[![App](https://img.shields.io/badge/Shiny_app-Available-FF9800?logo=rstudio)](https://<link-to-your-shiny-app>)
 
-**CES** is a quantitative computational framework and interactive web application for measuring context-dependent compound activity in complex multicellular systems.
+**CES** is a computational framework and interactive web application for quantifying context-dependent compound activity in multicellular co-culture systems.
 
-It integrates potency and efficacy into a single interpretable score, separating general compound toxicity from true interaction-dependent modulation. CES is applicable to diverse experimental setups, including cancer immunotherapy and host-pathogen antiviral screens.
+It integrates potency and efficacy into a single interpretable score, separating general compound toxicity from true interaction-dependent modulation. CES supports diverse experimental setups, including cancer immunotherapy drug screening and host–pathogen antiviral assays.
 
-## Table of Contents
-- [Repository Structure](#repository-structure)
-- [Web Application](#web-application)
-  - [Local Installation](#local-installation)
-- [Manuscript Reproducibility](#manuscript-reproducibility)
+---
+
+## Table of contents
+
+- [Repository structure](#repository-structure)
+- [Web application](#web-application)
+- [Manuscript reproducibility](#manuscript-reproducibility)
 - [Methodology](#methodology)
 - [Citation](#citation)
 - [Contact](#contact)
 
-## Repository Structure
+## Repository structure
 
-The code in this repository is organized into three primary directories:
+```
+CES/
+├── app/                 # Shiny web application (UI, server logic, assets)
+├── manuscript_code/     # Scripts and data to reproduce publication figures
+│   ├── scripts/         # Numbered R scripts for Figures 2–5
+│   └── example_workflow.R
+└── R/                   # Core mathematical and statistical functions
+```
 
-* **`app/`**
-  Contains the complete source code, user interface, and graphical assets for the CES Shiny web application.
+* **`app/`** — Complete source code for the CES Shiny web application.
+* **`manuscript_code/`** — Data and R scripts to reproduce all figures and analyses from the publication, plus a standalone workflow example.
+* **`R/`** — Core modeling functions shared by the web application and standalone scripts.
 
-* **`manuscript_code/`**
-  Provides the data and R scripts necessary to reproduce the figures and analyses presented in our publication. This also includes a standalone script (`example_workflow.R`) demonstrating how to apply the core methodology outside of the web app.
+## Web application
 
-* **`R/`**
-  Houses the core mathematical and statistical modeling functions that power both the web application and the standalone analysis scripts.
-
-## Web Application
-
-The CES Shiny application provides a graphical interface for data processing, quality control, dose-response modeling, and CES calculation.
+The CES Shiny app provides a graphical interface for data processing, quality control, dose–response modeling, and CES calculation.
 
 ### Features
-* **Data Processing:** Upload raw plate reader signals (Annotation files) or pre-processed inhibition/viability data.
-* **Toxicity Tuning:** Adjust the Control DSS threshold interactively to classify compound toxicity.
-* **Outputs:** Generate and export dose-response curves, spatial QC plots, and CES distribution rankings.
 
-### Local Installation
+* **Data processing** — Upload raw plate-reader signals via annotation files, or supply pre-processed inhibition/viability data directly.
+* **Toxicity tuning** — Interactively adjust the control DSS threshold to classify compound toxicity.
+* **Outputs** — Generate and export dose–response curves, spatial QC plots, and CES distribution rankings.
 
-To run the CES application locally, clone this repository and execute it via R or RStudio:
+### Local installation
 
-    # Clone the repository
-    git clone https://github.com/dias-dio/CES.git
+Clone the repository and launch the app from R or RStudio:
 
-    # Install required packages
-    install.packages(c("shiny", "bslib", "shinyjs", "ggplot2", "plotly", "dplyr", "DT", "readr", "readxl", "writexl"))
+```r
+# Clone the repository
+# git clone https://github.com/dias-dio/CES.git
 
-    # Run the application
-    shiny::runApp("CES/app")
+# Install required packages
+install.packages(c(
+  "shiny", "bslib", "shinyjs", "ggplot2", "plotly",
+  "dplyr", "DT", "readr", "readxl", "writexl"
+))
 
-## Manuscript Reproducibility
+# Run the application
+shiny::runApp("CES/app")
+```
 
-To reproduce the analyses and figures from the CES publication, refer to the manuscript_code/ directory.
+## Manuscript reproducibility
 
-* scripts/: Numbered R scripts to reproduce Figures 2 through 5.
-* example_workflow.R: A standalone script detailing how to apply the CES mathematical framework in an R environment without the web interface.
+All materials needed to reproduce the figures and analyses from the CES publication are in the `manuscript_code/` directory:
+
+* **`scripts/`** — Numbered R scripts to reproduce Figures 2 through 5.
+* **`example_workflow.R`** — A standalone script demonstrating how to apply the CES mathematical framework in a plain R environment, without the web interface.
 
 ## Methodology
 
 The CES pipeline operates in four stages:
 
-1. **Quality Control & Integration:** Raw measurements undergo plate-level QC. Co-culture interaction profiles are computed by adjusting co-culture responses against target-only and effector-only baselines.
-2. **Gaussian Mixture Modeling:** Co-culture profiles are modeled using a mixture of symmetric Gaussian functions to capture monotonic and non-linear response landscapes.
-3. **Feature Extraction:** Potency (normalized AUC) and maximal efficacy (Peak) are extracted from the fitted model.
-4. **Integration:** Extracted features are mathematically integrated to calculate the final Co-culture Efficacy Score (CES).
+1. **Quality control and integration** — Raw measurements undergo plate-level QC. Co-culture interaction profiles are computed by adjusting co-culture responses against target-only and effector-only baselines.
+2. **Gaussian mixture modeling** — Interaction profiles are fitted with a mixture of symmetric Gaussian functions to capture monotonic and non-linear dose–response landscapes.
+3. **Feature extraction** — Potency (normalized AUC) and maximal efficacy (peak) are derived from the fitted model.
+4. **Score integration** — Extracted features are mathematically combined to yield the final CES.
 
 ## Citation
 
-A manuscript detailing the CES methodology is currently in preparation. If you use CES or this code in your research, please cite this repository until the formal DOI is available:
+A manuscript describing the CES methodology is currently in preparation. In the meantime, please cite this repository:
 
-> Dias, D., et al. (2026). CES: A robust computational framework for quantifying context-dependent compound activity in multicellular systems. GitHub Repository: https://github.com/dias-dio/CES.
+> Dias, D. *et al.* (2026). CES: a computational framework for quantifying context-dependent compound activity in multicellular systems. GitHub repository: https://github.com/dias-dio/CES
 
 ## Contact
 
 **Diogo Dias**
-WebApp Maintainer and Method Developer
-Email: diogo.dias@helsinki.fi
+Method developer and web-app maintainer
+📧 diogo.dias@helsinki.fi
 
-Developed in collaboration with:
-* Institute for Molecular Medicine Finland (FIMM)
-* Hematology Research Unit Helsinki (HRUH)
-* University of Helsinki
+Developed in collaboration with the Institute for Molecular Medicine Finland (FIMM), the Hematology Research Unit Helsinki (HRUH), and the University of Helsinki.
