@@ -18,21 +18,16 @@ It integrates potency and efficacy into a single interpretable score, separating
 
 ## Repository Structure
 
-This repository contains both the source code for the Shiny application and the scripts required to reproduce the analyses presented in our manuscript.
+The code in this repository is organized into three primary directories:
 
-    CES/
-    ├── app/                       # Source code for the Shiny Web Application
-    │   ├── ui.R
-    │   ├── server.R
-    │   ├── www/                   # Assets (logos, CSS, images)
-    │   └── example_data/          # Example datasets for tutorials
-    ├── manuscript_code/           # Scripts to reproduce manuscript figures
-    │   ├── data/                  # Raw/processed data required for the figures
-    │   ├── scripts/               # R scripts for generating Figs 2-5
-    │   └── example_workflow.R     # Standalone script demonstrating the core methodology
-    ├── R/                         # Core mathematical and modeling functions
-    ├── README.md
-    └── LICENSE
+* **`app/`**
+  Contains the complete source code, user interface, and graphical assets for the CES Shiny web application.
+
+* **`manuscript_code/`**
+  Provides the data and R scripts necessary to reproduce the figures and analyses presented in our publication. This also includes a standalone script (`example_workflow.R`) demonstrating how to apply the core methodology outside of the web app.
+
+* **`R/`**
+  Houses the core mathematical and statistical modeling functions that power both the web application and the standalone analysis scripts.
 
 ## Web Application
 
