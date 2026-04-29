@@ -5,7 +5,7 @@
 
 **CES** is a computational framework and interactive web application for quantifying compound activity in multicellular co-culture systems.
 
-It integrates potency and efficacy into a single interpretable score, separating general compound toxicity from true interaction-dependent modulation. CES supports diverse experimental setups, including cancer immunotherapy drug screening and host-pathogen antiviral assays.
+It integrates cumulative activity and efficacy into a single interpretable score, separating general compound toxicity from true interaction-dependent modulation. CES supports diverse experimental setups, including cancer immunotherapy drug screening and host-pathogen antiviral assays.
 
 ---
 
@@ -79,7 +79,7 @@ The CES pipeline operates in four stages:
 
 1. **Quality control and integration** - Raw measurements undergo plate-level QC. Co-culture interaction profiles are computed by adjusting co-culture responses against target-only and effector-only baselines.
 2. **Gaussian mixture modeling** - Interaction profiles are fitted with a mixture of symmetric Gaussian functions to capture monotonic and non-linear dose-response landscapes.
-3. **Feature extraction** - Potency (normalized AUC) and maximal efficacy (peak) are derived from the fitted model.
+3. **Feature extraction** - Cumulative activity (normalized AUC) and maximal efficacy (peak) are derived from the fitted model.
 4. **Score integration** - Extracted features are mathematically combined to yield the final CES.
 
 ## Citation
