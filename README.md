@@ -1,6 +1,6 @@
 # CES: Co-culture Efficacy Score
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![App](https://img.shields.io/badge/Shiny_app-Available-FF9800?logo=rstudio)](https://<link-to-your-shiny-app>)
 
 **CES** is a computational framework and interactive web application for quantifying compound activity in multicellular co-culture systems.
