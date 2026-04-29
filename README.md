@@ -5,7 +5,7 @@
 
 **CES** is a computational framework and interactive web application for quantifying compound activity in multicellular co-culture systems.
 
-It integrates cumulative activity and efficacy into a single interpretable score, separating general compound toxicity from true interaction-dependent modulation. CES supports diverse experimental setups, including cancer immunotherapy drug screening and host-pathogen antiviral assays.
+It integrates cumulative activity and efficacy into a single interpretable score, separating general compound toxicity from true effector-mediated modulation. CES supports diverse experimental setups, including cancer immunotherapy drug screening and host-pathogen antiviral assays.
 
 ---
 
