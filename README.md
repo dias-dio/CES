@@ -7,7 +7,7 @@ CES is a computational framework for quantifying compound activity in multicellu
 An interactive web application is included for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
 
 <p align="center">
-  <img src="ces_logo.svg" alt="CES logo" width="400">
+  <img src="ces_logo.png" alt="CES logo" width="400">
 </p>
 
 ## Repository structure
