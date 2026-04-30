@@ -7,7 +7,7 @@ CES is a computational framework for quantifying compound activity in multicellu
 An interactive web application is included for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
 
 <p align="center">
-  <img src="CES_logo.png" alt="CES logo" width="600">
+  <img src="ces_logo.png" alt="CES logo" width="400">
 </p>
 
 ## Repository structure
@@ -21,7 +21,7 @@ CES/
 │       ├── anno file
 │       ├── exp.info file
 │       └── raw/
-├── app/                         # Web application
+├── app/                         # Shiny web application
 └── manuscript_code/
     ├── data/                    # Datasets for figure reproduction
     ├── CES_run.R                # Standalone workflow example
@@ -87,15 +87,15 @@ All scripts use relative paths and expect to be run from the `manuscript_code/` 
 
 ### Running the CES pipeline directly
 
-`manuscript_code/CES_run.R` demonstrates the full scoring pipeline in a plain R environment. It supports both 2-condition (co-culture and target monoculture) and 3-condition (adding effector monoculture) setups via the `run_CES()` wrapper function defined in `R/CES_functions.R`:
+`manuscript_code/CES_run.R` demonstrates the full scoring pipeline in a plain R environment. It supports both 2-condition (co-culture and target monoculture) and 3-condition (adding effector monoculture) setups via the `run_CES()` wrapper function defined in `R/CES_functions.R`.
 
-Expected column data: (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+Each input data frame (`df_cc`, `df_mono`, `df_ctrl`) should contain data for a single drug with four columns: `DRUG_NAME`, `CONCENTRATION`, `SCREEN_NAME`, `PERCENT_INHIBITION`.
 
-df_cc = co-culture dataset 
-
-df_mono = target monoculture dataset 
-
-df_ctrl = effector monoculture dataset 
+| Argument  | Description                    | Required                          |
+|-----------|--------------------------------|-----------------------------------|
+| `df_cc`   | Co-culture condition           | Yes                               |
+| `df_mono` | Target monoculture condition   | Yes                               |
+| `df_ctrl` | Effector monoculture condition | No (omit for 2-condition scoring) |
 
 ```r
 # Single drug, 3-condition therapeutic scoring
@@ -108,7 +108,7 @@ out <- run_CES(df_cc, df_mono)
 # Full compound library
 results_all <- do.call(rbind, lapply(drugs, function(d) {
   run_CES(
-    df_cc = coculture_data[coculture_data$DRUG_NAME == d, ],
+    df_cc   = coculture_data[coculture_data$DRUG_NAME == d, ],
     df_mono = mono_data[mono_data$DRUG_NAME == d, ],
     df_ctrl = control_data[control_data$DRUG_NAME == d, ],
     scoring_model = "therapeutic",
