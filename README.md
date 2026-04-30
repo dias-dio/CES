@@ -134,6 +134,7 @@ Two scoring modes are supported: a therapeutic mode that penalizes direct effect
 
 ## Contact
 
-Diogo Dias - diogo.dias@helsinki.fi
+* **General Inquiries and Collaborations:** Diogo Dias - [diogo.dias@helsinki.fi](mailto:diogo.dias@helsinki.fi)
+* **Web Application and Framework Support:** [cesframework@outlook.com](mailto:cesframework@outlook.com)
 
 Developed at the Institute for Molecular Medicine Finland (FIMM), the Hematology Research Unit Helsinki (HRUH), and the University of Helsinki.
