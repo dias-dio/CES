@@ -89,11 +89,13 @@ All scripts use relative paths and expect to be run from the `manuscript_code/` 
 
 `manuscript_code/CES_run.R` demonstrates the full scoring pipeline in a plain R environment. It supports both 2-condition (co-culture and target monoculture) and 3-condition (adding effector monoculture) setups via the `run_CES()` wrapper function defined in `R/CES_functions.R`:
 
-df_cc = co-culture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+Expected column data: (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
 
-df_mono = target monoculture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+df_cc = co-culture dataset 
 
-df_ctrl = effector monoculture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+df_mono = target monoculture dataset 
+
+df_ctrl = effector monoculture dataset 
 
 ```r
 # Single drug, 3-condition therapeutic scoring
