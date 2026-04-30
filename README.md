@@ -88,6 +88,9 @@ All scripts use relative paths and expect to be run from the `manuscript_code/` 
 ### Running the CES pipeline directly
 
 `manuscript_code/CES_run.R` demonstrates the full scoring pipeline in a plain R environment. It supports both 2-condition (co-culture and target monoculture) and 3-condition (adding effector monoculture) setups via the `run_CES()` wrapper function defined in `R/CES_functions.R`:
+`df_cc` = co-culture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+`df_mono` = target monoculture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
+`df_ctrl` = effector monoculture dataset (DRUG_NAME, CONCENTRATION, SCREEN_NAME, PERCENT_INHIBITION)
 
 ```r
 # Single drug, 3-condition therapeutic scoring
@@ -100,7 +103,7 @@ out <- run_CES(df_cc, df_mono)
 # Full compound library
 results_all <- do.call(rbind, lapply(drugs, function(d) {
   run_CES(
-    df_cc   = coculture_data[coculture_data$DRUG_NAME == d, ],
+    df_cc = coculture_data[coculture_data$DRUG_NAME == d, ],
     df_mono = mono_data[mono_data$DRUG_NAME == d, ],
     df_ctrl = control_data[control_data$DRUG_NAME == d, ],
     scoring_model = "therapeutic",
