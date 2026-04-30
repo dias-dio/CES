@@ -4,7 +4,11 @@
 
 CES is a computational framework for quantifying compound activity in multicellular co-culture systems. It integrates cumulative activity and efficacy into a single interpretable score, separating general compound toxicity from true effector-mediated modulation. The framework supports diverse experimental setups including cancer immunotherapy drug screening and host-pathogen antiviral assays.
 
-An interactive Shiny web application is included for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
+An interactive web application is included for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
+
+<p align="center">
+  <img src="ces_logo.svg" alt="CES logo" width="400">
+</p>
 
 ## Repository structure
 
@@ -17,7 +21,7 @@ CES/
 │       ├── anno file
 │       ├── exp.info file
 │       └── raw/
-├── app/                         # Shiny web application
+├── app/                         # Web application
 └── manuscript_code/
     ├── data/                    # Datasets for figure reproduction
     ├── CES_run.R                # Standalone workflow example
@@ -79,7 +83,31 @@ setwd("manuscript_code")
 source("CES_Figure_2.R")
 ```
 
-All scripts use relative paths and expect to be run from the `manuscript_code/` directory. `CES_run.R` provides a self-contained example of the full CES pipeline (curve fitting, delta computation, Gaussian mixture modeling, and scoring) for a single drug.
+All scripts use relative paths and expect to be run from the `manuscript_code/` directory.
+
+### Running the CES pipeline directly
+
+`manuscript_code/CES_run.R` demonstrates the full scoring pipeline in a plain R environment. It supports both 2-condition (co-culture and target monoculture) and 3-condition (adding effector monoculture) setups via the `run_CES()` wrapper function defined in `R/CES_functions.R`:
+
+```r
+# Single drug, 3-condition therapeutic scoring
+out <- run_CES(df_cc, df_mono, df_ctrl, scoring_model = "therapeutic")
+print(out$results)
+
+# Single drug, 2-condition scoring (no effector data)
+out <- run_CES(df_cc, df_mono)
+
+# Full compound library
+results_all <- do.call(rbind, lapply(drugs, function(d) {
+  run_CES(
+    df_cc   = coculture_data[coculture_data$DRUG_NAME == d, ],
+    df_mono = mono_data[mono_data$DRUG_NAME == d, ],
+    df_ctrl = control_data[control_data$DRUG_NAME == d, ],
+    scoring_model = "therapeutic",
+    plot = FALSE
+  )$results
+}))
+```
 
 ## Methodology
 
