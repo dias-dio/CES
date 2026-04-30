@@ -10,18 +10,24 @@ An interactive Shiny web application is included for data processing, quality co
 
 ```
 CES/
-├── R/                       # Core CES functions (scoring, curve fitting, QC)
-├── app/                     # Shiny web application
+├── R/
+│   ├── CES_functions.R          # Core CES functions (scoring, curve fitting, QC)
+│   ├── preprocess_CES_data.R    # Merge annotation, experiment info, and raw data
+│   └── K562_example_layout/     # Example input files for the preprocessing script
+│       ├── anno file
+│       ├── exp.info file
+│       └── raw/
+├── app/                         # Shiny web application
 └── manuscript_code/
-    ├── data/                # Datasets for figure reproduction
-    ├── CES_run.R            # Standalone workflow example
+    ├── data/                    # Datasets for figure reproduction
+    ├── CES_run.R                # Standalone workflow example
     ├── CES_Figure_2.R
     ├── CES_Figure_3.R
     ├── CES_Figure_4.R
     └── CES_Figure_5.R
 ```
 
-`R/` contains the core mathematical and statistical functions shared by both the web application and the standalone scripts. `app/` contains the full source code for the Shiny web application. `manuscript_code/` contains the data and scripts needed to reproduce all figures from the publication, along with a standalone workflow example (`CES_run.R`) demonstrating the CES framework in a plain R environment.
+`R/` contains the core scoring functions, a preprocessing script that merges raw plate-reader files (annotation, experiment info, and signal data) into the format expected by the Shiny app, and example input files for the K562 dataset illustrating the required layout. `app/` contains the full source code for the Shiny web application. `manuscript_code/` contains the data and scripts needed to reproduce all figures from the publication, along with a standalone workflow example (`CES_run.R`) demonstrating the CES framework in a plain R environment.
 
 ## Getting started
 
@@ -46,7 +52,7 @@ install.packages(c(
 shiny::runApp("app")
 ```
 
-The app allows uploading raw plate-reader data via annotation files or supplying pre-processed inhibition data directly. It includes interactive toxicity threshold tuning, dose-response curve visualization, spatial QC plots, and CES distribution exports.
+The app allows uploading raw plate-reader data via annotation files or supplying pre-processed inhibition data directly. It includes interactive toxicity threshold tuning, dose-response curve visualization, spatial QC plots, and CES distribution exports. To prepare raw data for the app, see `R/preprocess_CES_data.R` and the example layout in `R/K562_example_layout/`.
 
 ### Reproducing manuscript figures
 
