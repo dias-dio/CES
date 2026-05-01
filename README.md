@@ -153,7 +153,7 @@ Two scoring modes are supported: a therapeutic mode that penalizes effector-cell
 
 ## Citation
 
-> Dias, D. et al. (2026). CES: a computational framework for quantifying compound activity in multicellular co-culture systems. GitHub repository: https://github.com/dias-dio/CES
+> Dias, D. et al. (2026). Selective scoring of drug effects in multicellular co-culture systems. GitHub repository: https://github.com/dias-dio/CES
 
 ## Contact
 
