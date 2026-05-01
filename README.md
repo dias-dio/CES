@@ -47,7 +47,16 @@ cd CES
 
 #### Option 1: Docker (recommended)
 
-Docker packages the app with all dependencies, so there is nothing to install manually:
+Docker packages the app with all dependencies, so there is nothing to install manually.
+
+**Pull from Docker Hub (fastest):**
+
+```bash
+docker pull diasdio/ces-app:latest
+docker run -p 3838:3838 diasdio/ces-app:latest
+```
+
+**Or build locally from source:**
 
 ```bash
 docker build -t ces-app .
