@@ -149,7 +149,7 @@ The CES pipeline operates in four stages:
 3. Cumulative activity (nAUC) and maximal efficacy (Peak) are extracted from the fitted model.
 4. The extracted features are mathematically combined into the final CES.
 
-Two scoring models are supported: a therapeutic model that penalizes effector-cell toxicity using Bliss independence, and a mechanistic model that isolates effector-mediated modulation by adjusting for effector viability. Full mathematical details are provided in the accompanying manuscript.
+Two scoring models are supported: a therapeutic model that penalizes general effector-cell toxicity, and a mechanistic model that isolates effector-mediated modulation by adjusting for effector viability. Full mathematical details are provided in the accompanying manuscript.
 
 ## Citation
 
