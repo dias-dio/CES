@@ -22,6 +22,7 @@ CES/
 │       ├── exp.info file
 │       └── raw/
 ├── app/                         # Shiny web application
+├── Dockerfile                   # Docker image for local deployment
 └── manuscript_code/
     ├── data/                    # Datasets for figure reproduction
     ├── CES_run.R                # Standalone workflow example
@@ -31,7 +32,7 @@ CES/
     └── CES_Figure_5.R
 ```
 
-`R/` contains the core scoring functions, a preprocessing script that merges raw plate-reader files (annotation, experiment info, and signal data) into the format expected by the Shiny app, and example input files for the K562 dataset illustrating the required layout. `app/` contains the full source code for the Shiny web application. `manuscript_code/` contains the data and scripts needed to reproduce all figures from the publication, along with a standalone workflow example (`CES_run.R`) demonstrating the CES framework in a plain R environment.
+`R/` contains the core scoring functions, a preprocessing script that merges raw plate-reader files (annotation, experiment info, and signal data) into the format expected by the Shiny app, and example input files for a blood cancer cell line illustrating the required layout. `app/` contains the full source code for the Shiny web application. `manuscript_code/` contains the data and scripts needed to reproduce all figures from the publication, along with a standalone workflow example (`CES_run.R`) demonstrating the CES pipeline in a plain R environment.
 
 ## Getting started
 
@@ -43,6 +44,19 @@ cd CES
 ```
 
 ### Running the web application
+
+#### Option 1: Docker (recommended)
+
+Docker packages the app with all dependencies, so there is nothing to install manually:
+
+```bash
+docker build -t ces-app .
+docker run -p 3838:3838 ces-app
+```
+
+Then open [http://localhost:3838](http://localhost:3838) in your browser.
+
+#### Option 2: Local R installation
 
 Install the required packages and launch the app:
 
@@ -126,7 +140,7 @@ The CES pipeline operates in four stages:
 3. Cumulative activity (nAUC) and maximal efficacy (Peak) are extracted from the fitted model.
 4. The extracted features are mathematically combined into the final CES.
 
-Two scoring modes are supported: a therapeutic mode that penalizes direct effector-cell toxicity using Bliss independence, and a mechanistic mode that isolates effector-mediated modulation by adjusting for effector viability. Full mathematical details are provided in the accompanying manuscript.
+Two scoring modes are supported: a therapeutic mode that penalizes effector-cell toxicity using Bliss independence, and a mechanistic mode that isolates effector-mediated modulation by adjusting for effector viability. Full mathematical details are provided in the accompanying manuscript.
 
 ## Citation
 
@@ -135,6 +149,6 @@ Two scoring modes are supported: a therapeutic mode that penalizes direct effect
 ## Contact
 
 * **General Inquiries and Collaborations:** Diogo Dias - [diogo.dias@helsinki.fi](mailto:diogo.dias@helsinki.fi)
-* **Web Application and Framework Support:** [cesframework@outlook.com](mailto:cesframework@outlook.com)
+* **Web Application Support:** [cesframework@outlook.com](mailto:cesframework@outlook.com)
 
 Developed at the Institute for Molecular Medicine Finland (FIMM), the Hematology Research Unit Helsinki (HRUH), and the University of Helsinki.
