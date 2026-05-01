@@ -73,7 +73,7 @@ Install the required packages and launch the app:
 install.packages(c(
   "shiny", "bslib", "shinyjs", "plotly", "DT",
   "readxl", "readr", "dplyr", "data.table", "openxlsx",
-  "ggplot2", "drc", "caTools", "minpack.lm", "DEoptim"
+  "ggplot2", "drc", "caTools", "minpack.lm", "DEoptim", "tibble"
 ))
 
 shiny::runApp("app")
