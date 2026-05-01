@@ -1,0 +1,11 @@
+.git
+.gitignore
+README.md
+LICENSE
+CES_logo.png
+manuscript_code/
+R/
+*.Rproj
+.Rproj.user
+*.tar
+*.tar.gz
