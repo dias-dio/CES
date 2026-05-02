@@ -131,7 +131,7 @@ out <- run_CES(df_cc, df_mono)
 # Full compound library
 results_all <- do.call(rbind, lapply(drugs, function(d) {
   run_CES(
-    df_cc   = coculture_data[coculture_data$DRUG_NAME == d, ],
+    df_cc = coculture_data[coculture_data$DRUG_NAME == d, ],
     df_mono = mono_data[mono_data$DRUG_NAME == d, ],
     df_ctrl = control_data[control_data$DRUG_NAME == d, ],
     scoring_model = "therapeutic",
