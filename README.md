@@ -4,7 +4,7 @@
 
 CES is a computational framework for quantifying compound activity in multicellular co-culture systems. It integrates cumulative activity and efficacy into a single interpretable score, separating general compound toxicity from true effector-mediated modulation. The framework supports diverse experimental setups including cancer immunotherapy drug screening and host-pathogen antiviral assays.
 
-An interactive web application is included for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
+An interactive Shiny web-app is implemented for data processing, quality control, dose-response modeling, and CES calculation without requiring programming experience.
 
 <p align="center">
   <img src="CES_logo.png" alt="CES logo" width="600">
